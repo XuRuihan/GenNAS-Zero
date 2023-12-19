@@ -40,14 +40,14 @@ def load_one_batch_image(dataset_config = None):
   transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
     transforms.Normalize([0.4913997551666284, 0.48215855929893703, 0.4465309133731618], [0.24703225141799082, 0.24348516474564, 0.26158783926049628])])
-  trainset = torchvision.datasets.CIFAR10(root='./data/dataset', train=True,
-                                      download=True, transform=transform)
+  trainset = torchvision.datasets.CIFAR10(root='./data/datasets/cifar-10', train=True,
+                                      download=False, transform=transform)
 
   test_queue = torch.utils.data.DataLoader(trainset, batch_size=batch_size,
                                         shuffle=True, num_workers=2)
   
   test_queue = iter(test_queue)
-  data,_ = test_queue.next()
+  data,_ = next(test_queue)
   return data
 
 # https://github.com/quark0/darts/tree/master/cnn

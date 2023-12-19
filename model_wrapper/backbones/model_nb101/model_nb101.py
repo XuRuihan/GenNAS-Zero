@@ -134,7 +134,7 @@ class Cell(nn.Module):
                 outputs = torch.cat(out_concat, 1)
 
             if self.spec.matrix[0, self.num_vertices-1]:
-                outputs += self.input_op[self.num_vertices-1](tensors[0])
+                outputs = outputs + self.input_op[self.num_vertices-1](tensors[0])
 
             #if self.spec.matrix[0, self.num_vertices-1]:
             #    out_concat.append(self.input_op[self.num_vertices-1](tensors[0]))
